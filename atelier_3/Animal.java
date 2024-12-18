@@ -4,19 +4,20 @@ public class Animal {
     private String name;
     private int size;
     private int numberOfPaw;
-    private boolean isCarnivorous = false;
+    private boolean carnivorous;
 
     public Animal(String name,int size,int numberOfPaw ){
         this.name = name;
         this.size = size;
         this.numberOfPaw = numberOfPaw;
+        this.carnivorous = false;
     }
 
     public Animal(String name,int size,int numberOfPaw, boolean isCarnivorous ){
         this.name = name;
         this.size = size;
         this.numberOfPaw = numberOfPaw;
-        this.isCarnivorous = isCarnivorous;
+        this.carnivorous = isCarnivorous;
     }
 
     // GETTERS & SETTERS
@@ -45,29 +46,21 @@ public class Animal {
     }
 
     public boolean isCarnivorous (){
-        return this.isCarnivorous;
+        return this.carnivorous;
     }
 
     public void setIsCarnivorous(boolean isCarnivorous){
-        this.isCarnivorous = isCarnivorous;
+        this.carnivorous = isCarnivorous;
     }
 
     public String introduce(){
        return "Hey, en tant que " + this.getName() + ", j'ai " + this.getNumberOfPaw() + " pattes et "
-       + (this.isCarnivorous()? "je suis carnivore." : "je ne suis pas carnivore");
+       + (this.isCarnivorous()? "je suis " : "je ne suis pas ")
+       + "carnivore.";
     }
 
     public boolean isDangerous(){
-        return this.getSize()>50 && this.isCarnivorous()? true : false;
+        return this.getSize()>50 && this.isCarnivorous();
     }
 
-    public static void main(String[] args) {
-        Animal lion = new Animal("Lion", 105, 4, true);
-        Animal perroquet = new Animal("Perroquet", 50, 2);
-
-        System.out.println(lion.introduce());
-        System.out.println("Est ce que "+ lion.getName() + " est dangereux ? "+ (lion.isDangerous()));
-        System.out.println(perroquet.introduce());
-        System.out.println("Est ce que "+ perroquet.getName() + " est dangereux ? "+ (perroquet.isDangerous()));
-    }
 }
